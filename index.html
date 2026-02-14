@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>rubyneko craft</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7875467628228719"
+       crossorigin="anonymous"></script>
+  <style>
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    main {
+      flex: 1;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .app-card {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .app-card article {
+      height: 100%;
+      margin: 0;
+      transition: box-shadow 0.2s;
+    }
+    .app-card article:hover {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      color: var(--pico-muted-color);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <hgroup>
+      <h1>rubyneko craft</h1>
+      <p>ツールたち</p>
+    </hgroup>
+
+    <div class="card-grid">
+      <a class="app-card" href="./knitting-counter/">
+        <article>
+          <h3>🧶 Knitting Counter</h3>
+          <p>編み物用の段数カウンター</p>
+        </article>
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    &copy; rubyneko craft
+  </footer>
+</body>
+</html>
