@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>rubyneko craft</title>
+  <title>rubyneko craft - 編み物・手芸ツール</title>
+  <meta name="description" content="編み物・手芸を楽しむ人のための便利なWebツール集。棒針編みの段数カウンターなど、手芸の作業をサポートするアプリを公開しています。スマートフォンからも利用可能。">
   <meta property="og:title" content="rubyneko craft">
   <meta property="og:description" content="編み物用の段数カウンターなどのツール">
   <meta property="og:type" content="website">
@@ -18,9 +19,11 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-EFM0N8DNZ1');
   </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7875467628228719"
+     crossorigin="anonymous"></script>
   <style>
     body {
       min-height: 100vh;
@@ -30,53 +33,201 @@
     main {
       flex: 1;
     }
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.5rem;
+    /* ナビゲーション */
+    header {
+      position: relative;
     }
-    .app-card {
+    header nav {
+      padding: 0.5rem 0;
+    }
+    header nav a {
       text-decoration: none;
+    }
+    /* ハンバーガーメニュー */
+    .nav-hamburger {
+      display: none;
+    }
+    .nav-toggle {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.25rem 0.5rem;
+      line-height: 1;
       color: inherit;
+    }
+    @media (max-width: 640px) {
+      .nav-hamburger {
+        display: flex;
+      }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: var(--pico-background-color);
+        border: 1px solid var(--pico-muted-border-color);
+        border-radius: var(--pico-border-radius);
+        padding: 0.5rem;
+        flex-direction: column;
+        min-width: 180px;
+        z-index: 100;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+      .nav-links.open {
+        display: flex;
+      }
+    }
+    /* ヘッダーバナー */
+    .site-banner {
+      width: 100%;
+      line-height: 0;
+      margin-bottom: 2rem;
+    }
+    .site-banner img {
+      width: 100%;
+      height: auto;
       display: block;
     }
-    .app-card article {
-      height: 100%;
-      margin: 0;
-      transition: box-shadow 0.2s;
+    /* ヒーローセクション */
+    .hero {
+      padding: 1rem 0 2rem;
+      border-bottom: 1px solid var(--pico-muted-border-color);
+      margin-bottom: 2rem;
     }
-    .app-card article:hover {
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    .hero h1 {
+      margin-bottom: 0.5rem;
     }
-    footer {
+    .hero p {
+      color: var(--pico-muted-color);
+      line-height: 1.8;
+    }
+
+    .app-icon {
+      width: 6rem;
+      height: 6rem;
+      margin-right: 1rem;
+    }
+
+    .app-card-body {
+      display: flex;
+    }
+
+    /* セクション */
+    section {
+      margin-bottom: 2.5rem;
+    }
+    footer.site-footer {
       text-align: center;
       padding: 1rem;
       color: var(--pico-muted-color);
       font-size: 0.85rem;
+      border-top: 1px solid var(--pico-muted-border-color);
+      margin-top: 2rem;
     }
   </style>
 </head>
 <body>
-  <main class="container">
-    <hgroup>
-      <h1>rubyneko craft</h1>
-      <p>ツールたち</p>
-    </hgroup>
+  <header class="container">
+    <nav>
+      <ul>
+        <li><strong><a href="./">RubynekoCraft</a></strong></li>
+      </ul>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="./">ツール一覧</a></li>
+        <li><a href="./privacy.html">プライバシーポリシー</a></li>
+      </ul>
+      <ul class="nav-hamburger">
+        <li>
+          <button class="nav-toggle" id="navToggle" aria-label="メニューを開く" aria-expanded="false">☰</button>
+        </li>
+      </ul>
+    </nav>
+  </header>
 
-    <div class="card-grid">
-      <a class="app-card" href="./knitting-counter/">
-        <article>
-          <h3>🧶 Knitting Counter</h3>
-          <p>編み物用の段数カウンター</p>
-        </article>
-      </a>
-    </div>
+  <!-- ヘッダーバナー -->
+  <div class="site-banner">
+    <img src="./banner.png" alt="rubyneko craft - 手芸のプチツール">
+  </div>
+
+  <main class="container">
+
+    <!-- ヒーローセクション -->
+    <section class="hero">
+      <h1>RubynekoCraft</h1>
+      <p>
+        編み物・手芸を楽しむ人のための、ちいさな便利ツール集置き場です。<br>
+        手芸中のちょっとした不便を解消するWebアプリを、少しずつ作ります。<br>
+        すべてのツールはスマートフォンのブラウザからも利用できます。
+      </p>
+    </section>
+
+    <!-- ツール一覧 -->
+    <section>
+      <h2>ツール一覧</h2>
+      <div class="grid">
+        <div>
+          <article>
+            <header>
+              <h3>棒針編み段数カウンター</h3>
+            </header>
+            <div class="app-card-body">
+              <img src="./knitting-counter/icons/Icon-192.png" alt="Knitting Counter" class="app-icon">
+              <p>
+                棒針編み用の段数カウンターです。<br>
+                模様のループ数のカウントもできます。
+              </p>
+            </div>
+            <footer>
+              <div class="grid">
+                <div><small><a href="./knitting-counter/">アプリへ移動 →</a></small></div>
+                <div><small><a href="./knitting-counter-guide.html" onclick="event.stopPropagation()">使い方を見る →</a></small></div>
+              </div>
+            </footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- このサイトについて -->
+    <section>
+      <h2>このサイトについて</h2>
+      <p>
+        編み物・手芸が好きなひよっこエンジニアが個人で制作・運営するWebツールサイトです。<br>
+        自分が編み物をしていて「こんなツールがあったらいいな」と感じたものを形にして、同じように手芸を楽しむ方々に使っていただけたらと思い公開しています。
+      </p>
+      <p>
+        今後も少しずつツールを追加していく予定です。
+      </p>
+      <p>
+        ご意見・ご要望は <a href="https://x.com/haruby863" target="_blank" rel="noopener noreferrer">X: @haruby863</a> よりお気軽にどうぞ。
+      </p>
+    </section>
   </main>
 
-  <footer>
+  <footer class="site-footer">
     &copy; rubyneko craft &nbsp;|&nbsp;
     <a href="./privacy.html">プライバシーポリシー</a> &nbsp;|&nbsp;
     <a href="https://x.com/haruby863" target="_blank" rel="noopener noreferrer">X: @haruby863</a>
   </footer>
+  <script>
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    navToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen);
+      navToggle.textContent = isOpen ? '✕' : '☰';
+    });
+
+    // メニュー外クリックで閉じる
+    document.addEventListener('click', (e) => {
+      if (!navToggle.contains(e.target) && !navLinks.contains(e.target)) {
+        navLinks.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.textContent = '☰';
+      }
+    });
+  </script>
 </body>
 </html>

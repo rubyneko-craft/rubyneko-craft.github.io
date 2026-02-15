@@ -23,15 +23,74 @@
     main {
       flex: 1;
     }
-    footer {
+    header {
+      position: relative;
+    }
+    header nav a {
+      text-decoration: none;
+    }
+    .nav-hamburger {
+      display: none;
+    }
+    .nav-toggle {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.25rem 0.5rem;
+      line-height: 1;
+      color: inherit;
+    }
+    @media (max-width: 640px) {
+      .nav-hamburger {
+        display: flex;
+      }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: var(--pico-background-color);
+        border: 1px solid var(--pico-muted-border-color);
+        border-radius: var(--pico-border-radius);
+        padding: 0.5rem;
+        flex-direction: column;
+        min-width: 180px;
+        z-index: 100;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+      .nav-links.open {
+        display: flex;
+      }
+    }
+    footer.site-footer {
       text-align: center;
       padding: 1rem;
       color: var(--pico-muted-color);
       font-size: 0.85rem;
+      border-top: 1px solid var(--pico-muted-border-color);
+      margin-top: 2rem;
     }
   </style>
 </head>
 <body>
+  <header class="container">
+    <nav>
+      <ul>
+        <li><strong><a href="./">RubynekoCraft</a></strong></li>
+      </ul>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="./">ツール一覧</a></li>
+        <li><a href="./privacy.html">プライバシーポリシー</a></li>
+      </ul>
+      <ul class="nav-hamburger">
+        <li>
+          <button class="nav-toggle" id="navToggle" aria-label="メニューを開く" aria-expanded="false">☰</button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
   <main class="container">
     <hgroup>
       <h1>プライバシーポリシー</h1>
@@ -111,10 +170,28 @@
     <p><a href="./">← トップに戻る</a></p>
   </main>
 
-  <footer>
+  <footer class="site-footer">
     &copy; rubyneko craft &nbsp;|&nbsp;
     <a href="./privacy.html">プライバシーポリシー</a> &nbsp;|&nbsp;
     <a href="https://x.com/haruby863" target="_blank" rel="noopener noreferrer">X: @haruby863</a>
   </footer>
+  <script>
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    navToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen);
+      navToggle.textContent = isOpen ? '✕' : '☰';
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!navToggle.contains(e.target) && !navLinks.contains(e.target)) {
+        navLinks.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.textContent = '☰';
+      }
+    });
+  </script>
 </body>
 </html>

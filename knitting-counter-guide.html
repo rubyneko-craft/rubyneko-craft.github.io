@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>棒針編み段数カウンターの使い方</title>
+  <meta name="description" content="棒針編み用の段数カウンターアプリ「Knitting Counter」の使い方を解説します。複数のカウンターを同時に管理でき、複雑な模様編みにも対応しています。">
+  <meta property="og:title" content="Knitting Counter 使い方ガイド - rubyneko craft">
+  <meta property="og:description" content="棒針編み用の段数カウンターアプリの使い方ガイド。複数カウンター・模様パターン管理に対応。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://rubyneko-craft.github.io/knitting-counter-guide.html">
+  <meta property="og:image" content="https://rubyneko-craft.github.io/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@haruby863">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EFM0N8DNZ1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-EFM0N8DNZ1');
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7875467628228719"
+     crossorigin="anonymous"></script>
+  <style>
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    main {
+      flex: 1;
+    }
+    header {
+      position: relative;
+    }
+    header nav a {
+      text-decoration: none;
+    }
+    .nav-hamburger {
+      display: none;
+    }
+    .nav-toggle {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.25rem 0.5rem;
+      line-height: 1;
+      color: inherit;
+    }
+    @media (max-width: 640px) {
+      .nav-hamburger {
+        display: flex;
+      }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: var(--pico-background-color);
+        border: 1px solid var(--pico-muted-border-color);
+        border-radius: var(--pico-border-radius);
+        padding: 0.5rem;
+        flex-direction: column;
+        min-width: 180px;
+        z-index: 100;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+      .nav-links.open {
+        display: flex;
+      }
+    }
+    .hero-banner {
+      background: linear-gradient(135deg, #fce4ec, #f8bbd0);
+      border-radius: 1rem;
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .hero-banner img {
+      width: 120px;
+      height: auto;
+      border-radius: 0.75rem;
+      flex-shrink: 0;
+    }
+    .hero-banner h1 {
+      margin-bottom: 0.25rem;
+      font-size: 1.5rem;
+    }
+    .hero-banner p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+    @media (max-width: 640px) {
+      .hero-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-banner img {
+        width: 100px;
+      }
+    }
+    section {
+      margin-bottom: 2rem;
+    }
+    .steps li {
+      margin-bottom: 0.75rem;
+      line-height: 1.7;
+    }
+    .steps li strong {
+      display: block;
+      margin-bottom: 0.1rem;
+    }
+    .indent {
+      margin-left: 1.5rem;
+      font-size: 0.9rem;
+      color: var(--pico-muted-color);
+    }
+    .cta-box {
+      text-align: center;
+      padding: 2rem;
+      background: linear-gradient(135deg, #fce4ec, #f8bbd0);
+      border-radius: 1rem;
+      margin-top: 2rem;
+    }
+    .cta-box p {
+      margin-bottom: 1rem;
+    }
+    footer.site-footer {
+      text-align: center;
+      padding: 1rem;
+      color: var(--pico-muted-color);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--pico-muted-border-color);
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="container">
+    <nav>
+      <ul>
+        <li><strong><a href="./">RubynekoCraft</a></strong></li>
+      </ul>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="./">ツール一覧</a></li>
+        <li><a href="./privacy.html">プライバシーポリシー</a></li>
+      </ul>
+      <ul class="nav-hamburger">
+        <li>
+          <button class="nav-toggle" id="navToggle" aria-label="メニューを開く" aria-expanded="false">☰</button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <!-- ヒーローバナー -->
+    <div class="hero-banner">
+      <img
+        src="/knitting-counter/icons/Icon-192.png"
+        alt="rubyneko craft ロゴ"
+      >
+      <div>
+        <h1>棒針編み段数カウンター</h1>
+        <p><small>複数のカウンターを同時に管理できる、編み物専用Webアプリ</small></p>
+      </div>
+    </div>
+
+    <!-- 概要 -->
+    <section>
+      <p>
+        棒針編みの段数・模様パターンをスマートフォンで管理できるWebアプリです。インストール不要、無料でご利用いただけます。
+      </p>
+    </section>
+
+    <!-- 使い方 -->
+    <section>
+      <h2>使い方</h2>
+      <ol class="steps">
+        <li>
+          <strong>左下の ＋ ボタンからプロジェクトを作成</strong>
+        </li>
+        <li>
+          <strong>作成したプロジェクトをタップして開く</strong>
+          <p class="indent">長押しで削除できます</p>
+        </li>
+        <li>
+          <strong>右上の ⚙️ で基本設定</strong>
+          <p class="indent">現在の段数 — 途中からカウントする場合に使用</p>
+          <p class="indent">目標段数 — 全体で何段編むか</p>
+          <p class="indent">1段目の面 — 1段目を表とするか裏とするか</p>
+        </li>
+        <li>
+          <strong>右上の 🎨 で色設定</strong>
+          <p class="indent">表と裏のカウンターの色を変えられます</p>
+        </li>
+        <li>
+          <strong>「模様を追加」ボタンで模様パターンを設定</strong>
+          <p class="indent">模様名</p>
+          <p class="indent">段数 — 模様1ループの段数</p>
+          <p class="indent">目標段数 — 何段目まで編むか</p>
+          <p class="indent">開始段数 — 全体の何段目からカウントを始めるか<br>例: 8段ゴム編みの後に模様を始める場合は「9」と入力</p>
+        </li>
+        <li>
+          <strong>カウンター付近をタップするとカウントが進む</strong>
+          <p class="indent">「1段戻る」ボタンより上の範囲がタップ対象です。正確にカウンターを狙わなくても反応します</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- CTAボックス -->
+    <div class="cta-box">
+      <a href="./knitting-counter/" role="button">アプリを開く</a>
+    </div>
+
+    <p style="margin-top: 2rem;"><a href="./">← ツール一覧に戻る</a></p>
+  </main>
+
+  <footer class="site-footer">
+    &copy; rubyneko craft &nbsp;|&nbsp;
+    <a href="./privacy.html">プライバシーポリシー</a> &nbsp;|&nbsp;
+    <a href="https://x.com/haruby863" target="_blank" rel="noopener noreferrer">X: @haruby863</a>
+  </footer>
+  <script>
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    navToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen);
+      navToggle.textContent = isOpen ? '✕' : '☰';
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!navToggle.contains(e.target) && !navLinks.contains(e.target)) {
+        navLinks.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.textContent = '☰';
+      }
+    });
+  </script>
+</body>
+</html>
