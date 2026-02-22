@@ -1,0 +1,75 @@
+/* ライトモード カラー調整 */
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: #fff2e8;
+  }
+}
+
+/* レイアウト */
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+main {
+  flex: 1;
+}
+
+/* フッター */
+footer.site-footer {
+  text-align: center;
+  color: var(--pico-muted-color);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--pico-muted-border-color);
+  padding: 0.5rem 0;
+}
+
+/* ヘッダーバナー */
+.site-banner {
+  width: 100%;
+  line-height: 0;
+  margin-bottom: 1rem;
+}
+.site-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* セクション */
+section {
+  margin: 0;
+}
+
+article {
+  border-radius: 1rem;
+  text-align: center;
+}
+
+article p {
+  margin: 0;
+}
+
+main > section:last-child article {
+  margin-bottom: 0;
+}
+
+/* ツールカード */
+.app-card hr {
+  margin: 1rem 0 1rem 0;
+  border-color: #aeaeae;
+}
+
+.app-icon a {
+  display: block;
+  width: 8rem;
+  margin: 0 auto;
+}
+
+.app-icon img {
+  width: 8rem;
+  border-radius: 1rem;
+  display: block;
+  margin: 0 auto;
+}
+
